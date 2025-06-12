@@ -14,14 +14,18 @@ class HomeRepoImpl implements HomeRepo {
     required this.homeLocalDataSource,
   });
   @override
-  Future<Either<Failure, List<BookEntity>>> featchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> featchFeaturedBooks({
+    int pageNumber = 0,
+  }) async {
     List<BookEntity> books;
     try {
-      books = homeLocalDataSource.fetchFeaturedBooks();
+      books = homeLocalDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchFeaturedBooks();
+      books = await homeRemoteDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber,
+      );
       return right(books);
     } catch (e) {
       return left(ServerFailure.fromException(e));

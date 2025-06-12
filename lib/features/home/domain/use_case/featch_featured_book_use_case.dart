@@ -8,8 +8,8 @@ class FeatchFeaturedBookUseCase {
 
   FeatchFeaturedBookUseCase(this.homeRepo);
 
-  Future<Either<Failure, List<BookEntity>>> call() {
+  Future<Either<Failure, List<BookEntity>>> call({int pageNumber = 0}) async {
     //here to write additional code if needed befor applay the fun impl//
-    return homeRepo.featchFeaturedBooks();
+    return homeRepo.featchFeaturedBooks(pageNumber: pageNumber);
   }
 }

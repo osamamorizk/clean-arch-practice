@@ -3,15 +3,21 @@ import 'package:clean_arch_practice/features/home/presentation/views/widgets/boo
 import 'package:flutter/material.dart';
 
 class FeaturedListView extends StatelessWidget {
-  const FeaturedListView({super.key, required this.books});
+  const FeaturedListView({
+    super.key,
+    required this.books,
+    required this.scrollController,
+  });
   final List<BookEntity> books;
+  final ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .28,
       child: ListView.builder(
+        controller: scrollController,
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: books.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
