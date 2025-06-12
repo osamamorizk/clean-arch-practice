@@ -13,6 +13,14 @@ final class FeaturedBooksSuccess extends FeaturedBooksState {
   FeaturedBooksSuccess(this.books);
 }
 
+final class FeaturdBooksPaginationLoading extends FeaturedBooksState {}
+
+final class FeaturdBooksPaginationFailure extends FeaturedBooksState {
+  final String message;
+
+  FeaturdBooksPaginationFailure(this.message);
+}
+
 final class FeaturedBooksFailure extends FeaturedBooksState {
   final String message;
 

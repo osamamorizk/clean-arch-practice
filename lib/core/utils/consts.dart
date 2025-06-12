@@ -1,2 +1,2 @@
-const kFeaturedBooksBox = 'kFeaturedBooksBox10';
+const kFeaturedBooksBox = 'kFeaturedBooksBox11';
 const kNewestBooksBox = 'kNewestBooksBox';
