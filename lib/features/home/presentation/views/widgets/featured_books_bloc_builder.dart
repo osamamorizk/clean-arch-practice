@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:clean_arch_practice/core/widgets/featured_books_loading_indicator.dart';
 import 'package:clean_arch_practice/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_practice/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:clean_arch_practice/features/home/presentation/views/widgets/featured_listview.dart';
@@ -63,6 +64,7 @@ class _FeaturedBooksBlocBuilderState extends State<FeaturedBooksBlocBuilder> {
         }
       },
       builder: (context, state) {
+        return FeaturedBooksLoadingIndicator();
         if (state is FeaturedBooksSuccess ||
             state is FeaturdBooksPaginationLoading ||
             state is FeaturdBooksPaginationFailure) {
@@ -73,7 +75,7 @@ class _FeaturedBooksBlocBuilderState extends State<FeaturedBooksBlocBuilder> {
         } else if (state is FeaturedBooksFailure) {
           return Center(child: Text(state.message));
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return FeaturedBooksLoadingIndicator();
         }
       },
     );
